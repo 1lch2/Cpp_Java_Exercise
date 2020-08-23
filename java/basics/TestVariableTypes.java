@@ -7,17 +7,19 @@ public class TestVariableTypes {
         // Java 基本类型，赋值时使用传值操作
         // 变量必须先初始化再引用
 
-        // * Java 各基础类型的位数，最大值和最小值
-        // * 来源：https://www.runoob.com/java/java-basic-datatypes.html
-        BasicTypes.printInfo();
-
-        BasicTypes.printArray();
+        BasicTypes.printInfo(); // 基础类型信息
+        BasicTypes.printArray(); // 打印数组和数组地址
+        BasicTypes.testOverflow(); // 测试整数溢出
+        BasicTypes.testTypeConvert(); // 测试强制类型转换
     }
 }
 
 class BasicTypes {
     // 静态方法，不通过实例对象调用
     public static void printInfo() {
+        // * Java 各基础类型的位数，最大值和最小值
+        // * 来源：https://www.runoob.com/java/java-basic-datatypes.html
+
         // * byte
         System.out.println("基本类型：byte 二进制位数：" + Byte.SIZE); // 8
         System.out.println("包装类：java.lang.Byte");
@@ -70,12 +72,64 @@ class BasicTypes {
     }
 
     public static void printArray() {
-        final int[] intArray = new int[5];
+        int[] intArray = new int[5]; 
 
         for (int i = 0; i < intArray.length; i++){
             intArray[i] = 1 << i;
         }
         System.out.println("\nintArray[5]: " + Arrays.toString(intArray) );
         System.out.println("Address of intArray: " + intArray); 
+
+        intArray = new int[] {1, 2, 3, 5, 7, 11};
+        System.out.println("\n对基本类型元素的数组进行赋值，结果是在新的地址存放内容");
+        System.out.println("Address of intArray: " + intArray);
+
+        String[] stringArray = new String[] {"00", "01", "10", "11"};
+        System.out.println("\n对引用类型元素的数组进行赋值，结果是在对应下标连续存放字符串的指针");
+        System.out.println("对数组元素进行修改，结果时在新的内存地址存入字符串，然后修改对应下标的指针");
+        System.out.println("Address of stringArray: " + stringArray);
+
+        String ref = stringArray[0]; // 此处是将对应元素的指针赋值给了 ref 
+        System.out.println(ref);
+
+        stringArray[0] = "modified";
+        System.out.println("\n对原始数组元素进行修改，不影响通过 = 进行赋值的变量");
+        System.out.println("因此在对原数组修改元素后，通过变量 ref 仍然能访问到修改前的内容");;
+        System.out.println("stringArray[0]: " + stringArray[0]);
+        System.out.println("ref: " + ref);
+
+        // for each 循环类似 Python的 for in循环
+        for (int i : intArray){
+            System.out.printf("%d ", i);
+        }
+    }
+
+    public static void testOverflow() {
+        int num = 0x7fffffff;
+        
+        // Java 中整数采用补码表示，32位正整数最大值再加 1 会溢出到负值
+        System.out.println("\nJava正整数溢出：");
+        System.out.println("0 111 1111 1111 1111 1111 1111 1111 1111: " + num);
+        System.out.println("1 111 1111 1111 1111 1111 1111 1111 1110: " +  (num+1));
+    }
+
+    public static void testTypeConvert() {
+        int num = 0x0000037f;
+        byte num_ = (byte) num;
+
+        System.out.println("\nJava 强制类型转换，位数多的转少的会舍弃高位：");
+        System.out.println("0 000 0000 0000 0000 0000 0011 0111 1111: " + num);
+        System.out.println("0 111 1111: " + num_);
+
+        num = 0x000001ff;
+        num_ = (byte) num;
+        /*
+        * Java 使用补码表示，补码为反码+1
+        * 1111 1111 作为 8 位整数，先-1，
+        * 再除符号位外按位取反，得到 1 000 0001，即 -1
+        */
+
+        System.out.println("0 000 0000 0000 0000 0000 0001 1111 1111: " + num);
+        System.out.println("1 111 1111: " + num_); 
     }
 }
