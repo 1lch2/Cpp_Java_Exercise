@@ -7,14 +7,20 @@ public class TestVariableTypes {
         // Java 基本类型，赋值时使用传值操作
         // 变量必须先初始化再引用
 
-        BasicTypes.printInfo(); // 基础类型信息
+        // BasicTypes.printInfo(); // 基础类型信息
         BasicTypes.printArray(); // 打印数组和数组地址
-        BasicTypes.testOverflow(); // 测试整数溢出
-        BasicTypes.testTypeConvert(); // 测试强制类型转换
+        // BasicTypes.testOverflow(); // 测试整数溢出
+        // BasicTypes.testTypeConvert(); // 测试强制类型转换
+        // WrapperTypes.testWrapperTypes(); // 测试包装类型
     }
 }
 
 class BasicTypes {
+    /*
+    * Java 基本类型 (Primitive Types)
+    * 基本类型的赋值是传值操作，使用 = 即可将一个变量的值传给另一个变量
+    * 若使用 = 在对象之间进行赋值，则实际上是传递了对应的内存指针，被引用的对象修改时，引用的对象也会随之而变
+    */
     // 静态方法，不通过实例对象调用
     public static void printInfo() {
         // * Java 各基础类型的位数，最大值和最小值
@@ -72,6 +78,9 @@ class BasicTypes {
     }
 
     public static void printArray() {
+        /*
+        * 打印数组的多种方法
+        */
         int[] intArray = new int[5]; 
 
         for (int i = 0; i < intArray.length; i++){
@@ -99,12 +108,29 @@ class BasicTypes {
         System.out.println("ref: " + ref);
 
         // for each 循环类似 Python的 for in循环
+        System.out.println("\nfor each 循环");
         for (int i : intArray){
             System.out.printf("%d ", i);
         }
+
+        /*
+         * 二维数组 
+         */
+        int[][] twoDArray = {
+            {0, 1, 2},
+            {2, 3, 4},
+            {4, 5, 6, 7}
+        };
+
+        // 可以使用两层循环遍历二维数组
+        // 或者直接使用 Arrays 的内建方法转换成字符串
+        System.out.println("\n2D array:" + Arrays.deepToString(twoDArray));
     }
 
     public static void testOverflow() {
+        /*
+         * 测试整数溢出 
+         */
         int num = 0x7fffffff;
         
         // Java 中整数采用补码表示，32位正整数最大值再加 1 会溢出到负值
@@ -114,6 +140,9 @@ class BasicTypes {
     }
 
     public static void testTypeConvert() {
+        /*
+         * 测试类型转换 
+         */
         int num = 0x0000037f;
         byte num_ = (byte) num;
 
@@ -131,5 +160,39 @@ class BasicTypes {
 
         System.out.println("0 000 0000 0000 0000 0000 0001 1111 1111: " + num);
         System.out.println("1 111 1111: " + num_); 
+    }
+}
+
+class WrapperTypes{
+    /*
+     * Java 包装类型 
+     * 包装类本质是一个对象，含有属性和方法
+     * 包装类可以定义泛型（Generics）
+     * 包装类支持序列化（Serializable）
+     * 包装类提供了类型转换方法
+     */
+
+    public static void testWrapperTypes() {
+        /* 
+        * Integer 
+        */
+
+        // 包装类型和基本类型的拆箱与装箱（Autoboxing and Unboxing）
+        Integer intNum = 10; // 装箱：调用 Integer.valueOf(10)
+        int x = intNum;      // 拆箱：调用 intNum.intValue()
+
+        // 在 Java 9 之后已经废弃的构造方法
+        // Integer numA = new Integer(10);
+
+        // 一般使用
+        Integer numA = Integer.valueOf(10);
+        System.out.print("numA == inNum ?: ");
+        System.out.println(numA == intNum); // true
+
+        /*        
+        * String
+        */
+
+        
     }
 }
