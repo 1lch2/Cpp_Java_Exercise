@@ -4,12 +4,12 @@ import java.util.*;
 
 public class Sort {
     public static void quickSort(int[] seq) {
-        var stack = new Stack<int[]>();
+        Stack<int[]> stack = new Stack<int[]>();
         int[] temp = {0, seq.length-1};
         stack.push(temp);
 
         while (stack.size() > 0){
-            var index = stack.pop();
+            int[] index = stack.pop();
 
             int low = index[0];
             int high = index[1];
