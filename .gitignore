@@ -33,6 +33,3 @@
 
 # VSCode config files
 /.vscode
-
-# class file
-*.class

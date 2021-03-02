@@ -214,7 +214,9 @@ class WrapperTypes{
         String new_str = new String("string");
 
         System.out.println("Is equal: str == new_str: ");
-        System.out.println(str == new_str);
+        System.out.println(str == new_str); // 使用 == 只能对比引用的地址，不能比较值
+        System.out.println("Is the value of str the same as new_str:");
+        System.out.println(str.equals(new_str));
         System.out.println();
 
         // 字符串截取
@@ -231,5 +233,6 @@ class WrapperTypes{
         // 格式化字符串
         // 格式化符同C语言
         String formatted_str = String.format("Name: %s, Age: %d", "John", 24);
+        System.out.println(formatted_str);
     }
 }
