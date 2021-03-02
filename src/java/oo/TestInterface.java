@@ -7,6 +7,13 @@ interface Hello{
      */
     void hello();
     String getName();
+
+    /* 
+     * default 方法可以不用覆写 
+     */
+    default void bye() {
+        System.out.println("Bye~");
+    }
 }
 
 interface Hola{
