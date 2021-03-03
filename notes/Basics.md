@@ -42,3 +42,45 @@ javac -d ../bin java/algorithms/TestAlgorithms.java java/algorithms/Sort.java
 ```bash
 java -cp ../bin algorithms.TestAlgorithms
 ```
+
+## 异常处理
+### 继承关系
+                     ┌───────────┐
+                     │  Object   │
+                     └───────────┘
+                           ▲
+                           │
+                     ┌───────────┐
+                     │ Throwable │
+                     └───────────┘
+                           ▲
+                 ┌─────────┴─────────┐
+                 │                   │
+           ┌───────────┐       ┌───────────┐
+           │   Error   │       │ Exception │
+           └───────────┘       └───────────┘
+                 ▲                   ▲
+         ┌───────┘              ┌────┴──────────┐
+         │                      │               │
+┌─────────────────┐    ┌─────────────────┐┌───────────┐
+│OutOfMemoryError │... │RuntimeException ││IOException│...
+└─────────────────┘    └─────────────────┘└───────────┘
+                                ▲
+                    ┌───────────┴─────────────┐
+                    │                         │
+         ┌─────────────────────┐ ┌─────────────────────────┐
+         │NullPointerException │ │IllegalArgumentException │...
+         └─────────────────────┘ └─────────────────────────┘
+
+- `Error` 一般指严重的错误，程序无法处理
+- `Exception` 一般是运行时的错误，程序可以捕获并处理
+
+
+### 基本原则
+#### 1
+`Error` 和 `RunTimeException` 的子类必须捕获。
+`Exception` 除了 RunTimeException 的子类以外不要求捕获。
+
+#### 2
+- 尽量不要捕获通用异常（`Exception`），而是捕获通用异常，便于发现问题。
+- 不要忽略异常，在 `catch` 中处理异常信息。
