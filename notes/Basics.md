@@ -43,8 +43,14 @@ javac -d ../bin java/algorithms/TestAlgorithms.java java/algorithms/Sort.java
 java -cp ../bin algorithms.TestAlgorithms
 ```
 
+## 主类和文件名
+文件内只能有一个 `public class`，而且类名必须和文件名一致。
+
+文件内其他的 class 不能被同一个包内其他的类访问到。（？）
+
 ## 异常处理
 ### 继承关系
+```
                      ┌───────────┐
                      │  Object   │
                      └───────────┘
@@ -71,6 +77,7 @@ java -cp ../bin algorithms.TestAlgorithms
          ┌─────────────────────┐ ┌─────────────────────────┐
          │NullPointerException │ │IllegalArgumentException │...
          └─────────────────────┘ └─────────────────────────┘
+```
 
 - `Error` 一般指严重的错误，程序无法处理
 - `Exception` 一般是运行时的错误，程序可以捕获并处理
@@ -84,3 +91,18 @@ java -cp ../bin algorithms.TestAlgorithms
 #### 2
 - 尽量不要捕获通用异常（`Exception`），而是捕获通用异常，便于发现问题。
 - 不要忽略异常，在 `catch` 中处理异常信息。
+
+## Java 的类型系统
+
+```
+                      ┌────┐
+                      │Type│
+                      └────┘
+                         ▲
+                         │
+   ┌────────────┬────────┴─────────┬───────────────┐
+   │            │                  │               │
+┌─────┐┌─────────────────┐┌────────────────┐┌────────────┐
+│Class││ParameterizedType││GenericArrayType││WildcardType│
+└─────┘└─────────────────┘└────────────────┘└────────────┘
+```
