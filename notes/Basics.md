@@ -126,3 +126,23 @@ public class Collections {
 ```
 
 需要返回 `T` 的 `src` 是生产者，因此声明为 `List<? extends T>` ，需要写入 `T` 的 `dest` 是消费者，因此声明为 `List<? super T>`。
+
+## 编写 `equals()` 方法
+
+### 基本原则
+- 自反性（Reflexive）：对于非`null`的x来说，`x.equals(x)`必须返回`true`；
+- 对称性（Symmetric）：对于非`null`的`x`和`y`来说，如果`x.equals(y)`为`true`，则`y.equals(x)`也必须为`true`；
+- 传递性（Transitive）：对于非`null`的`x`、`y`和`z`来说，如果`x.equals(y)`为`true`，`y.equals(z)`也为`true`，那么`x.equals(z)`也必须为`true`；
+- 一致性（Consistent）：对于非`null`的`x`和`y`来说，只要`x`和`y`状态不变，则`x.equals(y)`总是一致地返回`true`或者`false`；
+- 对null的比较：即`x.equals(null)`永远返回`false`。
+  
+### 编写方法
+1. 先确定实例“相等”的逻辑，即哪些字段相等，就认为实例相等；
+2. 用instanceof判断传入的待比较的`Object`是不是当前类型，如果是，继续比较，否则，返回`false`；
+3. 对引用类型用`Objects.equals()`比较，对基本类型直接用==比较。
+
+使用`Objects.equals()`比较两个引用类型是否相等的目的是省去了判断`null`的麻烦。两个引用类型都是`null`时它们也是相等的。
+
+## 编写 `hashCode()` 方法
+
+对类的成员分别使用他们的类的 `hashCode()` 方法
