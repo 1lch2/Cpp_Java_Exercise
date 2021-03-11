@@ -107,7 +107,7 @@ public class TestCollection {
         //* TreeMap 保证遍历时按照 key 被加入的顺序来排序
         Map<String, Integer> map = new TreeMap<>();
 
-        //* TreeMap 的 key 对象必须实现 Comparable 接口
+        //* TreeMap 的 key 对象必须实现 Comparable 接口，或传入 Comparator
         //* 如果没有，创建 TreeMap 时需要实现一个自定义排序算法
 
         System.out.println("遍历 TreeMap：for-each 通过 keySet() 遍历");
@@ -120,6 +120,30 @@ public class TestCollection {
         System.out.print("\n");
         System.out.println();
 
+    }
+
+    public static void testSet() {
+        //* Set 用于存储不重复的元素，内部元素没有顺序
+        //* 类比 Python 的 set()
+        //* 最常用的实现类是 HashSet
+        System.out.println("Set 添加，删除测试");
+
+        Set<String> set = new HashSet<>();
+        System.out.println(set.add("abc")); // true
+        System.out.println(set.add("xyz")); // true
+        System.out.println(set.add("xyz")); // false，添加失败，因为元素已存在
+        System.out.println(set.contains("xyz")); // true，元素存在
+        System.out.println(set.contains("XYZ")); // false，元素不存在
+        System.out.println(set.remove("hello")); // false，删除失败，因为元素不存在
+        System.out.println(set.size()); // 2，一共两个元素
+
+        //* TreeSet 类似 TreeMap，保证内部元素有序
+        //* TreeSet 和 TreeMap 的要求一样，都需要传入元素实现 Comparable 接口，或传入 Comparator 对象
+    }
+
+    public static void testQueue() {
+        //* 先进先出的队列
+        
     }
 }
 
