@@ -7,6 +7,9 @@ public class TestCollection {
         testList();
         testMap();
         testTreeMap();
+        testQueue();
+        testPriorityQueue();
+        testDeque();
     }
 
     public static void testList() {
@@ -137,13 +140,83 @@ public class TestCollection {
         System.out.println(set.remove("hello")); // false，删除失败，因为元素不存在
         System.out.println(set.size()); // 2，一共两个元素
 
+        System.out.println();
+
         //* TreeSet 类似 TreeMap，保证内部元素有序
         //* TreeSet 和 TreeMap 的要求一样，都需要传入元素实现 Comparable 接口，或传入 Comparator 对象
     }
 
     public static void testQueue() {
         //* 先进先出的队列
+        //* 有的 Queue 实现类有最大长度限制，有的没有
+        Queue<String> queue = new LinkedList<>();
+
+        // 添加元素
+        // add() 或 offer() 
+        //* add() 失败时会抛出异常
+        //* offer() 失败时不会抛出异常，而是返回 false
+        queue.add("first");
+        queue.add("second");
+        queue.offer("third");
+
+        System.out.println("打印 Queue：");
+        System.out.println(queue.toString());
+
+        // 移出元素
+        // remove() 或 poll()
+        //* remove() 在空队列时会抛出异常
+        //* poll() 失败时会返回 false
+        String temp = queue.poll();
+        System.out.println("poll 结果：" + temp);
+
+        // 获取队首元素
+        String temp2 = queue.peek();
+        System.out.println("peek 结果：" + temp2);
+        System.out.println();
+
+        //* LinkedList 同时实现了 Queue 和 List 接口
         
+    }
+
+    public static void testPriorityQueue() {
+        //* 优先队列基于堆的数据结构实现
+        //* 每次取出优先级最大的元素，即堆顶元素（大顶堆）
+        //* 队列内元素必须实现 Comparable 接口，或在创建对象时传入一个 Comparator
+        Queue<String> q = new PriorityQueue<>();
+        System.out.println("PriorityQueue：");
+
+        q.offer("apple");
+        q.offer("pear");
+        q.offer("banana");
+        System.out.println("打印优先队列：" + q.toString()); // 此处按照添加顺序打印出来
+        System.out.println(q.poll()); // apple
+        System.out.println(q.poll()); // banana
+        System.out.println(q.poll()); // pear
+        System.out.println(q.poll()); // null,因为队列为空
+        
+        System.out.println();
+    }
+
+    public static void testDeque() {
+        //* Deque 是双端队列，两头都可以进出
+        //* Deque 扩展自 Queue
+
+        //* Deque 的实现类有 ArrayDeque 和 LinkedList
+        Deque<String> deque = new LinkedList<>();
+        System.out.println("双端队列 Deque：");
+
+        deque.offerLast("A"); // A
+        deque.offerLast("B"); // A <- B
+        deque.offerFirst("C"); // C <- A <- B
+        System.out.println("打印双端队列：" + deque.toString());
+        System.out.println(deque.pollFirst()); // C, 剩下A <- B
+        System.out.println(deque.pollLast()); // B, 剩下A
+        System.out.println(deque.pollFirst()); // A
+        System.out.println(deque.pollFirst()); // null
+    }
+
+    public static void testStack() {
+        //* Stack 是先进后出的结构
     }
 }
 
