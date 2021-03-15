@@ -2,8 +2,8 @@ package generics;
 
 public class SampleGenerics {
     public static void main(String[] args) {
-        Pair<Integer, String> pair = new Pair<>(10, "a");
-        System.out.println(pair.toString());
+        Pairs<Integer, String> pairs = new Pairs<>(10, "a");
+        System.out.println(pairs.toString());
     }
 }
 
@@ -12,7 +12,7 @@ public class SampleGenerics {
  * @param <T> 第一个对象
  * @param <K> 第二个对象
  */
-class Pair<T, K> {
+class Pairs<T, K> {
     /*
      * Java 使用擦除法（Type Erasure）实现泛型
      * 编译器将<T>视为 Object，并根据 <T> 实现安全的强制转型
@@ -27,7 +27,7 @@ class Pair<T, K> {
     private T first;
     private K second;
 
-    public Pair(T first, K second) {
+    public Pairs(T first, K second) {
         this.first = first;
         this.second = second;
     }
@@ -47,15 +47,15 @@ class Pair<T, K> {
 
     //* 泛型类型 <T> 不能用于静态方法
     //* 若需要静态方法，需要改写泛型类型，
-    //* 例：Pair<T> 改写为 public static <K> Pair <K> method(K first)
+    //* 例：Pairs<T> 改写为 public static <K> Pairs <K> method(K first)
 }
 
 /*
  * 一个类可以继承自一个泛型类，需要泛型有具体的泛型类型 
  * 这里继承了泛型的类可以获取到父类的泛型类型，即 T
  */
-class IntPair extends Pair<Integer, String> {
-    public IntPair(Integer first, String second) {
+class IntPairs extends Pairs<Integer, String> {
+    public IntPairs(Integer first, String second) {
         super(first, second);
     }
 }

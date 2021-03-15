@@ -1,6 +1,6 @@
 package reflection;
 
-public interface Hello {
+interface Hello {
     void sayHi(String name);
 }
 

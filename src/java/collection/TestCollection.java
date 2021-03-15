@@ -10,6 +10,7 @@ public class TestCollection {
         testQueue();
         testPriorityQueue();
         testDeque();
+        testStack();
     }
 
     public static void testList() {
@@ -202,6 +203,8 @@ public class TestCollection {
         //* Deque 扩展自 Queue
 
         //* Deque 的实现类有 ArrayDeque 和 LinkedList
+        //* ArrayDeque 插入元素不能为 null，无法确定数据量时，后期扩容会影响效率
+        //* LinkedList 插入元素可以为 null，无法确定数据量时表现更好
         Deque<String> deque = new LinkedList<>();
         System.out.println("双端队列 Deque：");
 
@@ -213,10 +216,25 @@ public class TestCollection {
         System.out.println(deque.pollLast()); // B, 剩下A
         System.out.println(deque.pollFirst()); // A
         System.out.println(deque.pollFirst()); // null
+
+        System.out.println();
     }
 
     public static void testStack() {
         //* Stack 是先进后出的结构
+        //* Stack 类继承自 Vector，现在不推荐使用
+        //* 一般使用 Deque 的实现类来当栈使用
+        Deque<String> stack = new LinkedList<>();
+
+        stack.push("buttom");
+        stack.push("first");
+        stack.push("second");
+
+        System.out.println("Stack peek: " + stack.peek());
+        System.out.println("Stack pop: " + stack.pop());
+        System.out.println(stack.toString()); // 从顶向下打印
+
+        System.out.println();        
     }
 }
 

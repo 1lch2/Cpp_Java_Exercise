@@ -20,7 +20,7 @@ public class GenericesExtend {
         System.out.println(p2.getFirst() + ", " + p2.getLast());
     }
     
-    static int add(Pair<? extends Number> p) { 
+    static int add(Pair<? extends Number> p) {
         // 这里的参数类型 Integer 是 Number 的子类
         // 但是泛型 Pair<Integer> 不是 Pair<Number> 的子类
 
