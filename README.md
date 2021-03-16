@@ -1,9 +1,8 @@
 # Cpp_Java_Exercise
-Personal exercises of Cpp and Java programming language.
+Personal exercises of Java programming language.
 
-## Java
-- Directory: `/java`
-- Java version: JDK 11 64bit
-## C/C++
-- Directory: `/c` and `/cpp`
-- C/C++ version: MinGW 8.1.0
+Ignore the "Cpp" part in the title.
+
+## Reference
+- [廖雪峰的Java教程](https://www.liaoxuefeng.com/wiki/1252599548343744)
+- [Official Java SE Document](https://docs.oracle.com/javase/8/docs/api/overview-summary.html)
