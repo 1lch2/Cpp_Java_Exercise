@@ -1,2 +1,4 @@
 first line
 second line
+added one more line.
+中文字符测试
