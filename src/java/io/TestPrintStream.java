@@ -19,10 +19,9 @@ public class TestPrintStream {
         // Reader reader = new FileReader("src/java/io/sample.txt", StandardCharsets.UTF_8
         // 指定编码的参数在 Java 11 引入，Java 8 使用如下方法
         InputStream input = new FileInputStream("src/java/io/sample.txt");
-        try (InputStreamReader reader = new InputStreamReader(input, "UTF-8")) {
+        try (InputStreamReader reader = new InputStreamReader(input, StandardCharsets.UTF_8)) {
             //* InputStreamReader 可以指定字符集参数，并接受一个 InputStream
             //* InputStreamReader 将任何 InputStream 转换为 Reader，本质上是 byte 到 char 的转换器
-
 
             while (true) {
                 int n = reader.read(); // 反复调用 read 方法直到返回 -1
