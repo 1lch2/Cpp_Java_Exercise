@@ -1,4 +1,4 @@
-package others;
+package junit;
 
 public class Person {
     int uid;
@@ -49,6 +49,9 @@ public class Person {
     }
 
     public int getBirthYear(int age) {
+        if (age >= 120) {
+            throw new IllegalArgumentException();
+        }
         return 2021 - age;
     }
 

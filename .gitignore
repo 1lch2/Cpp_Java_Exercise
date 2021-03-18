@@ -36,7 +36,7 @@
 /.vscode
 
 # IntelliJ idea
-/bin
+/target
 /.idea
 *.iml
 

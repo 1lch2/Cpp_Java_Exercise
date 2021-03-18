@@ -146,3 +146,13 @@ public class Collections {
 ## 编写 `hashCode()` 方法
 
 对类的成员分别使用他们的类的 `hashCode()` 方法
+
+## Java 中的线程
+
+### 线程状态
+- New：新创建的线程，尚未执行；【就绪态】
+- Runnable：运行中的线程，正在执行`run()`方法的Java代码；【运行态】
+- Blocked：运行中的线程，因为某些操作被阻塞而挂起；【阻塞态】
+- Waiting：运行中的线程，因为某些操作在等待中；
+- Timed Waiting：运行中的线程，因为执行`sleep()`方法正在计时等待；
+- Terminated：线程已终止，因为`run()`方法执行完毕。
