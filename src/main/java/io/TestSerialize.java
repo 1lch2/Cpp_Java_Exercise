@@ -21,7 +21,7 @@ public class TestSerialize {
         try (ObjectOutputStream output = new ObjectOutputStream(buffer_out)) {
             output.writeInt(65535);
             output.writeUTF("yes");
-            output.writeObject(Double.valueOf(3.14159265));
+            output.writeObject(Double.valueOf(3.14159265)); // 此处用包装类并没有必要
         }
         System.out.println("ObjectOutputStream: " + Arrays.toString(buffer_out.toByteArray()));
         System.out.println();
@@ -36,7 +36,7 @@ public class TestSerialize {
 
             System.out.println("n: " + n + "; str: " + str + "; Double: " + d);
         } catch (ClassNotFoundException e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
         System.out.println();        
     }

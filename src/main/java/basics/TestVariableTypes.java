@@ -8,19 +8,19 @@ public class TestVariableTypes {
         // 变量必须先初始化再引用
 
         BasicTypes.printInfo(); // 基础类型信息
-        // BasicTypes.printArray(); // 打印数组和数组地址
-        // BasicTypes.testOverflow(); // 测试整数溢出
-        // BasicTypes.testTypeConvert(); // 测试强制类型转换
+        BasicTypes.printArray(); // 打印数组和数组地址
+        BasicTypes.testOverflow(); // 测试整数溢出
+        BasicTypes.testTypeConvert(); // 测试强制类型转换
         WrapperTypes.testWrapperTypes(); // 测试包装类型
     }
 }
 
 class BasicTypes {
     /*
-    * Java 基本类型 (Primitive Types)
-    * 基本类型的赋值是传值操作，使用 = 即可将一个变量的值传给另一个变量
-    * 若使用 = 在对象之间进行赋值，则实际上是传递了对应的内存指针，被引用的对象修改时，引用的对象也会随之而变
-    */
+     * Java 基本类型 (Primitive Types)
+     * 基本类型的赋值是传值操作，使用 = 即可将一个变量的值传给另一个变量
+     * 若使用 = 在对象之间进行赋值，则实际上是传递了对应的内存指针，被引用的对象修改时，引用的对象也会随之而变
+     */
     // 静态方法，不通过实例对象调用
     public static void printInfo() {
         System.out.println("----------基本类型----------");
@@ -85,21 +85,21 @@ class BasicTypes {
         System.out.println("----------数组类型----------");
 
         /*
-        * 打印数组的多种方法
-        */
-        int[] intArray = new int[5]; 
+         * 打印数组的多种方法
+         */
+        int[] intArray = new int[5];
 
-        for (int i = 0; i < intArray.length; i++){
+        for (int i = 0; i < intArray.length; i++) {
             intArray[i] = 1 << i;
         }
-        System.out.println("\nintArray[5]: " + Arrays.toString(intArray) );
-        System.out.println("Address of intArray: " + intArray); 
+        System.out.println("\nintArray[5]: " + Arrays.toString(intArray));
+        System.out.println("Address of intArray: " + intArray);
 
-        intArray = new int[] {1, 2, 3, 5, 7, 11};
+        intArray = new int[]{1, 2, 3, 5, 7, 11};
         System.out.println("\n对基本类型元素的数组进行赋值，结果是在新的地址存放内容");
         System.out.println("Address of intArray: " + intArray);
 
-        String[] stringArray = new String[] {"00", "01", "10", "11"};
+        String[] stringArray = new String[]{"00", "01", "10", "11"};
         System.out.println("\n对引用类型元素的数组进行赋值，结果是在对应下标连续存放字符串的指针");
         System.out.println("对数组元素进行修改，结果是在新的内存地址存入字符串，然后修改对应下标的指针");
         System.out.println("Address of stringArray: " + stringArray);
@@ -109,23 +109,24 @@ class BasicTypes {
 
         stringArray[0] = "modified";
         System.out.println("\n对原始数组元素进行修改，不影响通过 = 进行赋值的变量");
-        System.out.println("因此在对原数组修改元素后，通过变量 ref 仍然能访问到修改前的内容");;
+        System.out.println("因此在对原数组修改元素后，通过变量 ref 仍然能访问到修改前的内容");
+
         System.out.println("stringArray[0]: " + stringArray[0]);
         System.out.println("ref: " + ref);
 
         // for each 循环类似 Python的 for in循环
         System.out.println("\nfor each 循环");
-        for (int i : intArray){
+        for (int i : intArray) {
             System.out.printf("%d ", i);
         }
 
         /*
-         * 二维数组 
+         * 二维数组
          */
         int[][] twoDArray = {
-            {0, 1, 2},
-            {2, 3, 4},
-            {4, 5, 6, 7}
+                {0, 1, 2},
+                {2, 3, 4},
+                {4, 5, 6, 7}
         };
 
         // 可以使用两层循环遍历二维数组
@@ -135,19 +136,19 @@ class BasicTypes {
 
     public static void testOverflow() {
         /*
-         * 测试整数溢出 
+         * 测试整数溢出
          */
         int num = 0x7fffffff;
-        
+
         // Java 中整数采用补码表示，32位正整数最大值再加 1 会溢出到负值
-        System.out.println("\nJava正整数溢出：");
+        System.out.println("\nJava正整数溢出(补码)：");
         System.out.println("0 111 1111 1111 1111 1111 1111 1111 1111: " + num);
-        System.out.println("1 111 1111 1111 1111 1111 1111 1111 1110: " +  (num+1));
+        System.out.println("1 111 1111 1111 1111 1111 1111 1111 1110: " + (num + 1));
     }
 
     public static void testTypeConvert() {
         /*
-         * 测试类型转换 
+         * 测试类型转换
          */
         int num = 0x0000037f;
         byte num_ = (byte) num;
@@ -159,19 +160,19 @@ class BasicTypes {
         num = 0x000001ff;
         num_ = (byte) num;
         /*
-        * Java 使用补码表示，补码为反码+1
-        * 1111 1111 作为 8 位整数，先-1，
-        * 再除符号位外按位取反，得到 1 000 0001，即 -1
-        */
+         * Java 使用补码表示，补码为反码+1
+         * 1111 1111 作为 8 位整数，先-1，
+         * 再除符号位外按位取反，得到 1 000 0001，即 -1
+         */
 
         System.out.println("0 000 0000 0000 0000 0000 0001 1111 1111: " + num);
-        System.out.println("1 111 1111: " + num_); 
+        System.out.println("1 111 1111: " + num_);
     }
 }
 
-class WrapperTypes{
+class WrapperTypes {
     /*
-     * Java 包装类型 
+     * Java 包装类型
      * 包装类本质是一个对象，含有属性和方法
      * 包装类可以定义泛型（Generics）
      * 包装类支持序列化（Serializable）
@@ -181,9 +182,9 @@ class WrapperTypes{
     public static void testWrapperTypes() {
         System.out.println("----------包装类型----------");
 
-        /* 
-        * Integer 
-        */
+        /*
+         * Integer
+         */
 
         // 包装类型和基本类型的拆箱与装箱（Autoboxing and Unboxing）
         Integer intNum = 10; // 装箱：调用 Integer.valueOf(10)
@@ -198,15 +199,15 @@ class WrapperTypes{
         System.out.println(numA == intNum); // true
         System.out.println();
 
-        /*        
-        * String
-        */
-        
+        /*
+         * String
+         */
+
         // 在创建String对象时，若已有相同的缓存对象，则直接返回引用
         String str = "string";
         String str_2 = str;
 
-        System.out.println("Is equal: str == str_2: "); 
+        System.out.println("Is equal: str == str_2: ");
         System.out.println(str == str_2);
         System.out.println();
 
@@ -221,7 +222,7 @@ class WrapperTypes{
 
         // 字符串截取
         System.out.println("原字符串：" + str);
-        System.out.println("使用substring()截取，左开右闭，原理同Python的切片：" + str.substring(1,3));
+        System.out.println("使用substring()截取，左开右闭，原理同Python的切片：" + str.substring(1, 3));
 
         // String 本身不可变，使用变量赋值只是更改了指针
         String s1 = "first";

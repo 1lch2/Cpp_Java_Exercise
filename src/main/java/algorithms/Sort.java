@@ -4,7 +4,9 @@ import java.util.*;
 
 public class Sort {
     public static void quickSort(int[] seq) {
-        Stack<int[]> stack = new Stack<int[]>();
+        // 非递归式快排
+
+        Deque<int[]> stack = new LinkedList<>(); // 使用 Deque 作为栈
         int[] temp = {0, seq.length-1};
         stack.push(temp);
 

@@ -9,7 +9,7 @@ public class TestLogging {
 
         logger.info("Start main method.");
         logger.warning("Warning message sample.");
-        logger.fine("Ignored messasge sample.");
+        logger.fine("Ignored message sample.");
         logger.severe("Extremely dangerous situation.");
     }
 }

@@ -14,7 +14,7 @@ public class TestEnum {
         System.out.println("Weekday.MON: " + Weekday.MON.name());
 
         // ordinal() 返回顺序
-        System.out.println("Number of Wekday.SUN: " + Weekday.SUN.ordinal());
+        System.out.println("Number of Weekday.SUN: " + Weekday.SUN.ordinal());
 
 
     }
@@ -30,12 +30,18 @@ enum Weekday {
     // MON, TUE, WED, THU, FRI, SAT, SUN;
 
     // 添加构造方法和字段
-    MON(1, "星期一"), TUE(2, "星期二"), WED(3, "星期三"), THU(4, "星期四"), FRI(5, "星期五"), SAT(6, "星期六"), SUN(0, "星期日");
+    MON(1, "星期一"),
+    TUE(2, "星期二"),
+    WED(3, "星期三"),
+    THU(4, "星期四"),
+    FRI(5, "星期五"),
+    SAT(6, "星期六"),
+    SUN(0, "星期日");
 
     public final int dayVal;
     private final String cnName;
 
-    private Weekday(int dayVal, String cnName) {
+    Weekday(int dayVal, String cnName) {
         this.dayVal = dayVal;
         this.cnName = cnName;
     }

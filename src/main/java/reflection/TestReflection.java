@@ -18,9 +18,9 @@ public class TestReflection {
         // TODO: ClassNotFoundException
 
         // 打印信息
-        printClassinfo(cls0);
-        printClassinfo(cls1);
-        // printClassinfo(cls2);
+        printClassInfo(cls0);
+        printClassInfo(cls1);
+        // printClassInfo(cls2);
 
         // 打印方法的信息
         printClassMethodInfo(cls1);
@@ -66,7 +66,7 @@ public class TestReflection {
      * 打印传入的Class实例的信息
      * @param cls Class 对象的实例
      */
-    private static void printClassinfo(Class cls) {
+    private static void printClassInfo(Class cls) {
         System.out.println("Class name: " + cls.getName());
         System.out.println("Simple name: " + cls.getSimpleName());
         if (cls.getPackage() != null) {

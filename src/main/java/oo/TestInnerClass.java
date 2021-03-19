@@ -14,7 +14,7 @@ public class TestInnerClass {
 
 class Outer {
     private String name;
-    private static String NAME = "Monsieur";
+    private static String NAME = "Monsieur"; // 静态字段在所有对象间共享且唯一
 
     Outer(String name) {
         this.name = name;

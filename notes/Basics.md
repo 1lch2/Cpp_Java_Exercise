@@ -1,5 +1,16 @@
 # Java 基础随记
 
+## Java 类的访问权限
+
+| Modifier  | Current class | Same package | Subclass | Other packages |
+|-----------|---------------|--------------|----------|----------------|
+| public    |       ✅       |       ✅      |     ✅    |        ✅       |
+| protected |       ✅       |       ✅      |     ✅    |                |
+| default   |       ✅       |       ✅      |          |                |
+| private   |       ✅       |              |          |                |
+
+
+
 ## “错误：找不到或无法加载主类”的原因以及解决办法
 ### 问题
 在有 `package` 加包名的Java文件中，如果直接运行 `java 主类名` 会出现 `错误: 找不到或无法加载主类`。

@@ -1,6 +1,7 @@
 package io;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.*;
 import java.util.Properties;
 
@@ -15,6 +16,7 @@ public class TestIO {
 
     public static void testFile() {
         try {
+            // 绝对路径从 / 开始
             File f = new File("/Users/lichenghao02/Workspace/VSCode_workspace/Cpp_Java_Exercise/src/java/io/sample.txt");
             System.out.println("File path: " + f.toString());
             System.out.println(f.isFile());
@@ -40,7 +42,7 @@ public class TestIO {
 
     public static void testProperty() throws Exception{
         // 从 .properties 文件中读取配置
-        String settingFile = "/Users/lichenghao02/Workspace/VSCode_workspace/Cpp_Java_Exercise/src/java/io/settings.properties";
+        String settingFile = "src/java/io/settings.properties";
         Properties props = new Properties();
         props.load(new java.io.FileInputStream(settingFile));
 
@@ -52,7 +54,9 @@ public class TestIO {
     }
 
     public static void testTraverse() {
-        File d = new File("./"); //* 此处 ./ 表示的是项目根目录
+        //* 此处 ./ 表示的是项目根目录
+        //* . 表示当前目录，此处为项目根目录
+        File d = new File("./");
         for (File f : d.listFiles()) {
             System.out.println(f);
         }
@@ -68,7 +72,7 @@ public class TestIO {
     }
 
     public static void testInputStream() throws IOException{
-        //* InputSteram.read() 是阻塞型方法，IO耗时较大，容易影响性能
+        //* InputStream.read() 是阻塞型方法，IO耗时较大，容易影响性能
 
         System.out.println("使用InputStream每次读取一个字节");
         // 一次读取一个字节
@@ -118,7 +122,7 @@ public class TestIO {
         System.out.println("使用 FileOutputStream 写入文件流");
         OutputStream output = new FileOutputStream("src/java/io/output.txt");
         output.write(97);
-        output.write("\nhello world!".getBytes("UTF-8")); // write() 也是一个阻塞方法
+        output.write("\nhello world!".getBytes(StandardCharsets.UTF_8)); // write() 也是一个阻塞方法
         output.close();
         System.out.println();
 

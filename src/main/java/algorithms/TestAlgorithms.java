@@ -15,7 +15,7 @@ public class TestAlgorithms {
         Sort.quickSort(seq);
         System.out.println("After: " + Arrays.toString(seq));
         
-        System.out.println("\nUsing Array.sort():\nBefore: " + Arrays.toString(seq_copy));
+        System.out.println("\nUsing Arrays.sort():\nBefore: " + Arrays.toString(seq_copy));
         Arrays.sort(seq_copy);
         System.out.println("After: " + Arrays.toString(seq_copy));
     }
