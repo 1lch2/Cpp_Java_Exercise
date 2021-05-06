@@ -1,5 +1,8 @@
-package design;
+package design.builder;
 
+/**
+ * 建造器（Builder）模式
+ */
 public class NutritionFacts {
 
     private final int servingSize;  // Required

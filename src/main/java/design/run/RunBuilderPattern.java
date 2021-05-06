@@ -1,6 +1,8 @@
-package design;
+package design.run;
 
-public class RunDesignPatterns {
+import design.builder.NutritionFacts;
+
+public class RunBuilderPattern {
 
     public static void main(String[] args) {
         NutritionFacts coke = new NutritionFacts.Builder(200, 8)
