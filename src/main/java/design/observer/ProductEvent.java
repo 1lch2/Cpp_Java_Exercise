@@ -13,7 +13,7 @@ public class ProductEvent {
     public static final String PRICE_CHANGE_EVENT = "price_change";
 
     /** 事件类型 */
-    private String event;
+    private final String event;
 
     private ProductEvent(String event) {
         this.event = event;

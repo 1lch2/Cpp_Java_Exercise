@@ -13,9 +13,9 @@ import java.util.Map;
 public class Store implements ProductObservable {
 
     /** 订阅者列表 */
-    private List<ProductObserver> subscribers = new ArrayList<>();
+    private final List<ProductObserver> subscribers = new ArrayList<>();
     /** 商品列表 */
-    private Map<String, Product> products = new HashMap<>();
+    private final Map<String, Product> products = new HashMap<>();
 
     @Override
     public void addObserver(ProductObserver observer) {

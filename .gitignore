@@ -42,3 +42,6 @@
 
 # Java library
 /lib
+
+# macOS
+.DS_Store
