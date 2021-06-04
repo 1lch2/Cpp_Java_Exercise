@@ -236,13 +236,14 @@ public class TestCollection {
 
         System.out.println();        
     }
-}
 
-class Student {
-    public String name;
-    public int score;
-    public Student(String name, int score) {
-        this.name = name;
-        this.score = score;
+    static class Student {
+        public String name;
+        public int score;
+        public Student(String name, int score) {
+            this.name = name;
+            this.score = score;
+        }
     }
+
 }
