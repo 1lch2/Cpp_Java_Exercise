@@ -1,4 +1,4 @@
-package org.bd.java_exercise.multithread;
+package org.bd.java_exercise.thread;
 
 public class TestThread {
     public static void main(String[] args) throws Exception{
@@ -45,6 +45,10 @@ public class TestThread {
                 while (! isInterrupted()) {
                     i++;
                     System.out.print(i + ", ");
+
+                    if (isInterrupted()) {
+                        System.out.println("\n>>> Thread interrupted >>>");
+                    }
                 }
             }
         };
