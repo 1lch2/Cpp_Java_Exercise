@@ -8,11 +8,11 @@ import java.util.Date;
 public class SampleThread implements Runnable {
 
     /** 线程的ID */
-    private final int id;
+    private final String id;
     /** 运行时间：秒 */
     private final int time;
 
-    public SampleThread(int id, int time) {
+    public SampleThread(String id, int time) {
         this.id = id;
         this.time = time;
     }
